@@ -1,3 +1,7 @@
 from django.shortcuts import render
+from utils.crosswordsgen import Crossword
+import gspread
 
-# Create your views here.
+
+def index(request):
+    render(request, 'index.html', {})
