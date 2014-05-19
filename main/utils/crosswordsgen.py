@@ -10,9 +10,9 @@ from chars import pt_BR
 
 
 class Crossword(object):
-    def __init__(self, cols, rows, empty='-', maxloops=2000, available_words=[], lowercase=True, black_list=[]):
-        self.cols = cols
-        self.rows = rows
+    def __init__(self, cols=0, rows=0, empty='-', maxloops=2000, available_words=[], lowercase=True, black_list=[]):
+        self.cols = cols if cols > 0 else len(available_words)
+        self.rows = rows if rows > 0 else len(available_words)
         self.empty = empty
         self.maxloops = maxloops
         self.available_words = available_words
@@ -359,7 +359,7 @@ word_list = [[u'Viva Novos Tempos', u''],
              [u'Colaboradores', u''],
              [u'Ação', u'']]
 
-a = Crossword(len(word_list), len(word_list), '-', 5000, word_list, False)
+a = Crossword(0, 0, '-', 5000, word_list, False)
 a.compute_crossword(10)
 # print a.word_bank()
 print a.solution()
